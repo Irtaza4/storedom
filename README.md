@@ -1,16 +1,30 @@
-# store
+# ODDLY
 
-A new Flutter project.
+Unusually good objects. A Flutter design store with animated product illustrations, shared-object page transitions, a branded splash, editorial collections, favorites, variant-aware bag and demo checkout.
 
-## Getting Started
+## Run
 
-This project is a starting point for a Flutter application.
+```sh
+flutter pub get
+flutter run
+# Browser
+flutter run -d chrome
+```
 
-A few resources to get you started if this is your first Flutter project:
+## Verify
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```sh
+flutter analyze
+flutter test
+flutter build web --no-wasm-dry-run
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Visual baselines cover 360px, 430px and 1200px widths. To intentionally regenerate them:
+
+```sh
+flutter test --update-goldens test/visual_test.dart
+```
+
+Read [design.md](design.md) for the visual system, screen map and motion specification. App state lives in `lib/state`, screens in `lib/screens`, shared components in `lib/widgets`, and typography/navigation in `lib/core`.
+
+Fonts and illustrations work offline. Font licenses are in `assets/fonts`. Illustrations are animated 2.5D Canvas artwork. Bag and favorites reset on restart. Checkout is explicitly a demo: no payment, external request or shipment occurs.
